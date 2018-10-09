@@ -5,8 +5,8 @@ import os
 pdf = FPDF()
 
 imagelist = []                                                 # Contains the list of all images to be converted to PDF.
-folder = 'C:\\Users\\Praneet Kumar\\Desktop\\New Folder\\'     # Folder containing all the images.
-name = "AI.pdf"                                                # Name of the output PDF file.
+folder = ""                                                    # Folder containing all the images.
+name = ""                                                      # Name of the output PDF file.
 
 
 # ------------- ADD ALL THE IMAGES IN A LIST ------------- #
