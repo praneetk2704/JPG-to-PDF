@@ -1,0 +1,2 @@
+fpdf
+Pillow
