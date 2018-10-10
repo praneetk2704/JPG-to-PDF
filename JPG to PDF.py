@@ -3,8 +3,11 @@ from PIL import Image
 import os
 
 pdf = FPDF()
-
 imagelist = []                                                 # Contains the list of all images to be converted to PDF.
+
+
+# --------------- USER INPUT -------------------- #
+
 folder = ""                                                    # Folder containing all the images.
 name = ""                                                      # Name of the output PDF file.
 
