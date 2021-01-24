@@ -15,7 +15,7 @@ name = ""                                                      # Name of the out
 # ------------- ADD ALL THE IMAGES IN A LIST ------------- #
 
 for dirpath, dirnames, filenames in os.walk(folder):
-    for filename in [f for f in filenames if f.endswith(".jpg")]:
+    for filename in [f for f in filenames if f.lower().endswith(".jpg") or f.lower().endswith(".jpeg")]:
         full_path = os.path.join(dirpath, filename)
         imagelist.append(full_path)
 
