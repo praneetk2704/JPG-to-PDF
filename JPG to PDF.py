@@ -43,6 +43,6 @@ for image in imagelist:
     pdf.add_page()
     pdf.image(image, 0, 0, 210, 297)                           # 210 and 297 are the dimensions of an A4 size sheet.
 
-pdf.output(folder + name, "F")                                 # Save the PDF.
+pdf.output(folder + name+'.pdf', "F")                                 # Save the PDF.
 
 print("PDF generated successfully!")
