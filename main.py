@@ -16,7 +16,7 @@ def get_images(directory):
     imagelist.sort()  # Sort the images by name.
     return imagelist
 
-def fix_landscape(imglist)
+def fix_landscape(imglist):
     """Rotate any landscape mode image if present."""
     for i in range(0, len(imglist)):
         im1 = Image.open(imglist[i])  # Open the image.
@@ -26,7 +26,7 @@ def fix_landscape(imglist)
             os.remove(imglist[i])  # Delete the previous image.
             im2.save(imglist[i])  # Save the rotated image.
 
-def make_pdf(directory, name, imglist)
+def make_pdf(directory, name, imglist):
     """Convert <imglist> into a PDF and saves it in <directory> as <name>."""
     pdf = FPDF()
     for image in imglist:
@@ -38,10 +38,10 @@ def make_pdf(directory, name, imglist)
     pdf.output(directory + name, "F")  # Save the PDF.
 
 @click.command()
-@click.agument("dirpath", help="Path to the target directory.")
-@click.agument("name", help="Name of the output file.")
+@click.argument("dirpath")
+@click.argument("name")
 def main(dirpath, name):
-    """Merge every '.jpg' file in a directory into a single PDF."""
+    """Merge every '.jpg' file in DIRPATH into a single PDF called NAME."""
     imagelist = get_images(dirpath)
 
     for imgpath in imagelist:
@@ -54,5 +54,5 @@ def main(dirpath, name):
     make_pdf(dirpath, name, imagelist)
     print(f"[✓] Done!")
 
-if "__name__" == __main__:
+if __name__ == "__main__":
     main() # Run the script.
