@@ -37,3 +37,22 @@ def make_pdf(directory, name, imglist)
 
     pdf.output(directory + name, "F")  # Save the PDF.
 
+@click.command()
+@click.agument("dirpath", help="Path to the target directory.")
+@click.agument("name", help="Name of the output file.")
+def main(dirpath, name):
+    """Merge every '.jpg' file in a directory into a single PDF."""
+    imagelist = get_images(dirpath)
+
+    for imgpath in imagelist:
+        print(imgpath)
+
+    print(f"[✓] Found {len(imagelist)} '.jpg' files.")
+    fix_landscape(imagelist)
+
+    print(f"[i] Generating PDF...")
+    make_pdf(dirpath, name, imagelist)
+    print(f"[✓] Done!")
+
+if "__name__" == __main__:
+    main() # Run the script.
