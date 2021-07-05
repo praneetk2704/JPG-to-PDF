@@ -1,3 +1,2 @@
 fpdf
 Pillow
-natsort
