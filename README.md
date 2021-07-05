@@ -1,7 +1,7 @@
 # JPG-to-PDF CLI Tool
 
 JPG to PDF is a simple Python script which converts all the images into PDF format and then merges all the images as one single PDF. 
-**Note:** The script works only for pictures clicked in portrait mode.
+- **Note:** The script works only for pictures clicked in portrait mode.
 
 ## Working
 The script only takes two inputs.
@@ -13,5 +13,5 @@ The script only takes two inputs.
 
 The output PDF is saved in the same directory.
 
-**Note:** The directory should contain only the images to be converted to PDF. 
+- **Note:** The directory should contain only the images to be converted to PDF. 
 
