@@ -1,17 +1,20 @@
+import os
+from pathlib import Path
+
+import click
 from fpdf import FPDF
 from PIL import Image
-import click
-
-from pathlib import Path
-import os
 
 
 def get_images(directory):
     """Return a list with all the images in <directory>."""
     imagelist = []  # Contains the list of all images to be converted to PDF.
+
+    directory = str(Path(directory))
+
     for dirpath, dirnames, filenames in os.walk(directory):
         for filename in [f for f in filenames if f.endswith(".jpg")]:
-            full_path = str(Path.joinpath(dirpath, filename))
+            full_path = str(Path.joinpath(Path(dirpath), filename))
             imagelist.append(full_path)
 
     imagelist.sort()  # Sort the images by name.
@@ -40,7 +43,8 @@ def make_pdf(directory, name, imglist):
             image, 0, 0, 210, 297
         )  # 210 and 297 are the dimensions of an A4 size sheet.
 
-    pdf.output(directory + name, "F")  # Save the PDF.
+    output_path = str(Path.joinpath(Path(directory), f"{name}.pdf"))
+    pdf.output(output_path, "F")  # Save the PDF.
 
 
 @click.command()
@@ -50,10 +54,11 @@ def main(dirpath, name):
     """Merge every '.jpg' file in DIRPATH into a single PDF called NAME."""
     imagelist = get_images(dirpath)
 
-    for imgpath in imagelist:
-        print(imgpath)
-
     print(f"[✓] Found {len(imagelist)} '.jpg' files.")
+
+    for imgpath in imagelist:
+        print(f"[i] {imgpath}")
+
     fix_landscape(imagelist)
 
     print(f"[i] Generating PDF...")
