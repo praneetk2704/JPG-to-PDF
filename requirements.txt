@@ -1,2 +1,3 @@
 fpdf
 Pillow
+click
