@@ -10,7 +10,7 @@ imagelist = []                                                 # Contains the li
 
 folder = ""                                                    # Folder containing all the images.
 name = ""                                                      # Name of the output PDF file.
-
+auto_rotate = True                                             # Auto rotate all images to portrait before processing.
 
 # ------------- ADD ALL THE IMAGES IN A LIST ------------- #
 
@@ -28,7 +28,7 @@ for i in range(0, len(imagelist)):
 for i in range(0, len(imagelist)):
     im1 = Image.open(imagelist[i])                             # Open the image.
     width, height = im1.size                                   # Get the width and height of that image.
-    if width > height:
+    if auto_rotate and width > height:
         im2 = im1.transpose(Image.ROTATE_270)                  # If width > height, rotate the image.
         os.remove(imagelist[i])                                # Delete the previous image.
         im2.save(imagelist[i])                                 # Save the rotated image.
